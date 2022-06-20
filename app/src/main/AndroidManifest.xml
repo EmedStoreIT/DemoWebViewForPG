@@ -25,6 +25,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".WebViewActivity" />
+        <activity android:name="com.rum.myapplication.gif.GifActivity" />
     </application>
 
 </manifest>
