@@ -15,7 +15,6 @@ class GifActivity : AppCompatActivity() {
 
         binding = ActivityGifBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//        setSupportActionBar(binding.toolbar)
 
         loadGIFTest()
     }
@@ -23,6 +22,18 @@ class GifActivity : AppCompatActivity() {
     private fun loadGIFTest() {
         Glide.with(this)
             .load(R.raw.gif_1)
-            .into(binding.imageView);
+            .into(binding.iv1)
+
+        Glide.with(this)
+            .load(R.raw.gif_2)
+            .into(binding.iv2)
+
+        Glide.with(this)
+            .load(R.raw.gif_3)
+            .into(binding.iv3)
+
+        Glide.with(this)
+            .load(R.raw.gif_4)
+            .into(binding.iv4)
     }
 }
