@@ -7,6 +7,7 @@ import android.telephony.TelephonyManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.rum.myapplication.databinding.ActivityMainBinding
+import com.rum.myapplication.fblogin.FBLoginActivity
 import com.rum.myapplication.gif.GifActivity
 
 
@@ -34,6 +35,14 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnGetCountryName.setOnClickListener {
             checkCountryName()
+        }
+
+        binding.btnLoadGIF.setOnClickListener {
+            navigateToGifPage()
+        }
+
+        binding.btnFBLogin.setOnClickListener {
+            startActivity(Intent(mContext, FBLoginActivity::class.java))
         }
     }
 
