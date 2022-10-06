@@ -3,12 +3,10 @@ package com.rum.myapplication.fblogin
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.facebook.CallbackManager
-import com.facebook.FacebookCallback
-import com.facebook.FacebookException
-import com.facebook.Profile
+import com.facebook.*
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import com.rum.myapplication.databinding.ActivityFbLoginBinding
@@ -56,13 +54,27 @@ class FBLoginActivity : AppCompatActivity() {
                     Toast.makeText(mContext, exception.message, Toast.LENGTH_SHORT).show()
                 }
 
-                override fun onSuccess(result: LoginResult) {
+                override fun onSuccess(loginResult: LoginResult) {
 
-                    val profile: Profile? = Profile.getCurrentProfile()
-                    Toast.makeText(mContext, profile?.id ?: "no id found", Toast.LENGTH_SHORT).show()
-                    Toast.makeText(mContext, profile?.firstName ?: "no fname found", Toast.LENGTH_SHORT).show()
-                    Toast.makeText(mContext, profile?.lastName ?: "no lname found", Toast.LENGTH_SHORT).show()
+                    /*val profile: Profile? = Profile.getCurrentProfile()
 
+                    Log.e("RumFB", "onSuccess--------" + loginResult.accessToken)
+                    Log.e("RumFB", "Token--------" + loginResult.accessToken.token)
+                    Log.e("RumFB", "Permission--------" + loginResult.recentlyGrantedPermissions)
+                    val profile2 : Profile? = Profile.getCurrentProfile()
+                    Log.e("RumFB", "ProfileDataNameF--" + (profile2?.firstName ?: "no fName found"))
+                    Log.e("RumFB", "ProfileDataNameL--" + (profile2?.lastName ?: "no lName found"))
+                    Log.e("RumFB", "FB ID --" + (profile2?.id ?: "no lName found"))
+                    Log.e("RumFB", "Image URI--" + (profile?.linkUri?: "no linkUri found"))*/
+
+                    val request = GraphRequest.newMeRequest(loginResult.accessToken) { objectt, response ->
+                        Log.e("RumFB", "GraphResponse-------------" + response.toString())
+                        Log.e("RumFB", "objectt-------------" + objectt.toString())
+                    }
+                    val parameters = Bundle()
+//                    parameters.putString("fields", "id,name,link,gender,birthday,email")
+                    request.parameters = parameters
+                    request.executeAsync()
 
 
                     /*try {
