@@ -7,13 +7,14 @@ android {
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.rum.myapplication"
         minSdk 23
         targetSdk 32
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        resValue "string", "app_name", "Main Project"
     }
 
     buildTypes {
@@ -32,6 +33,32 @@ android {
     buildFeatures {
         viewBinding true
     }
+
+    flavorDimensions "platform"
+    productFlavors {
+        medihive {
+            dimension "platform"
+            applicationId "com.medihive"
+            versionNameSuffix "-medihive"
+
+            resValue "string", "app_name", "Medihive"
+        }
+        dawalive {
+            dimension "platform"
+            applicationId "com.dawalive"
+            versionNameSuffix "-dawalive"
+
+            resValue "string", "app_name", "Dawalive"
+        }
+        medicineman {
+            dimension "platform"
+            applicationId "com.medicineman"
+            versionNameSuffix "-medicineman"
+
+            resValue "string", "app_name", "Medicine Man"
+        }
+    }
+
 }
 
 dependencies {
