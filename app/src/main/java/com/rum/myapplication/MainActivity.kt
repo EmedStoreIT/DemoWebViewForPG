@@ -25,48 +25,5 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
 
-        binding.btnLoadURL.setOnClickListener {
-            navigateToWebViewPage()
-        }
-
-        binding.btnLoadGIF.setOnClickListener {
-            navigateToGifPage()
-        }
-
-        binding.btnGetCountryName.setOnClickListener {
-            checkCountryName()
-        }
-
-        binding.btnLoadGIF.setOnClickListener {
-            navigateToGifPage()
-        }
-
-        binding.btnFBLogin.setOnClickListener {
-            startActivity(Intent(mContext, FBLoginActivity::class.java))
-        }
-    }
-
-    private fun navigateToWebViewPage() {
-        startActivity(
-            Intent(this, WebViewActivity::class.java)
-        )
-    }
-
-    private fun navigateToGifPage() {
-        startActivity(
-            Intent(this, GifActivity::class.java)
-        )
-    }
-
-    private fun checkCountryName() {
-        try {
-//        val country = applicationContext.resources.configuration.locale.displayCountry
-            val tm = getSystemService(TELEPHONY_SERVICE) as TelephonyManager
-            val countryCode = tm.simCountryIso
-
-            Toast.makeText(mContext, "Country Code = $countryCode", Toast.LENGTH_LONG).show()
-        } catch (e: Exception) {
-            Toast.makeText(mContext, e.message, Toast.LENGTH_SHORT).show()
-        }
     }
 }
