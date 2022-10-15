@@ -78,3 +78,16 @@ dependencies {
 
     implementation 'com.facebook.android:facebook-login:15.0.1'
 }
+
+tasks.register('rum_task') {
+    doLast {
+        def files = file('/home/rumit/Downloads/firefox.tmp').listFiles().sort()
+        files.each { File file ->
+            if (file.isFile()) {
+                ant.loadfile(srcFile: file, property: file.name)
+                println " *** $file.name ***"
+                println "${ant.properties[file.name]}"
+            }
+        }
+    }
+}
