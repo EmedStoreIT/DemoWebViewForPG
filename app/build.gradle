@@ -4,6 +4,14 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('/home/rumit/Rumit/AOSP/EmedStoreTestLab/app/keystores/temp_keystore.jks')
+            storePassword 'temp_keystore'
+            keyAlias 'temp_keystore'
+            keyPassword 'temp_keystore'
+        }
+    }
     compileSdk 32
 
     defaultConfig {
@@ -15,6 +23,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         resValue "string", "app_name", "Main Project"
+        signingConfig signingConfigs.release
     }
 
     buildTypes {
@@ -78,3 +87,13 @@ dependencies {
 
     implementation 'com.facebook.android:facebook-login:15.0.1'
 }
+
+abstract class RumTask extends DefaultTask {
+
+    @TaskAction
+    def greet() {
+        println 'hello from RumTask'
+    }
+}
+
+tasks.register('rum_task', RumTask)
