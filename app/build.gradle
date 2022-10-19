@@ -87,13 +87,3 @@ dependencies {
 
     implementation 'com.facebook.android:facebook-login:15.0.1'
 }
-
-abstract class RumTask extends DefaultTask {
-
-    @TaskAction
-    def greet() {
-        println 'hello from RumTask'
-    }
-}
-
-tasks.register('rum_task', RumTask)
