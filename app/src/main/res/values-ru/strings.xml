@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="change_localization">Изменить язык</string>
+    <string name="test_text">Здравствуйте, это текст для выбранного языка.</string>
+</resources>

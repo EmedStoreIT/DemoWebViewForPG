@@ -27,33 +27,20 @@
         android:orientation="vertical"
         android:padding="20dp">
 
-        <Button
-            android:id="@+id/btnLoadURL"
+        <TextView
+            android:id="@+id/tvTestText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Load URL" />
+            android:text="@string/test_text" />
 
         <Button
-            android:id="@+id/btnLoadGIF"
+            android:id="@+id/btnTestLocalization"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Load GIF" />
+            android:text="@string/change_localization"
+            android:textAllCaps="false" />
 
-        <Button
-            android:id="@+id/btnGetCountryName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Check country code" />
-
-        <Button
-            android:id="@+id/btnFBLogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="FB Login test" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.appcompat.widget.LinearLayoutCompat>

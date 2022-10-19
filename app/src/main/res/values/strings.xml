@@ -13,4 +13,14 @@
     <string name="facebook_app_id">407156250929438</string>
     <string name="fb_login_protocol_scheme">fb407156250929438</string>
     <string name="facebook_client_token">0171cd5051a0f078153b5914d53894a0</string>
+
+    <string name="broadcast_language_changed">broadcast language changed</string>
+    <string name="language_english">English</string>
+    <string name="language_hindi">Hindi</string>
+    <string name="language_russian">Russian</string>
+    <string name="language_uzbek">Uzbek</string>
+
+    <string name="change_localization">Change Language</string>
+    <string name="test_text">Hello, this is a text for selected language.</string>
+
 </resources>

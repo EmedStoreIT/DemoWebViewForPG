@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="change_localization">भाषा बदलो</string>
+    <string name="test_text">नमस्ते, यह चयनित भाषा के लिए एक पाठ है।</string>
+</resources>

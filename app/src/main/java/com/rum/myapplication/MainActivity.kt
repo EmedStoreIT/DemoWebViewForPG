@@ -1,14 +1,17 @@
 package com.rum.myapplication
 
+import android.app.Activity
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.telephony.TelephonyManager
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.rum.myapplication.databinding.ActivityMainBinding
-import com.rum.myapplication.fblogin.FBLoginActivity
-import com.rum.myapplication.gif.GifActivity
+import com.rum.myapplication.utils.AppUtil
+import com.rum.myapplication.utils.MyContextWrapper
+import com.rum.myapplication.utils.SP
+import com.rum.myapplication.utils.getPref
 
 
 class MainActivity : AppCompatActivity() {
@@ -25,48 +28,50 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
 
-        binding.btnLoadURL.setOnClickListener {
-            navigateToWebViewPage()
-        }
-
-        binding.btnLoadGIF.setOnClickListener {
-            navigateToGifPage()
-        }
-
-        binding.btnGetCountryName.setOnClickListener {
-            checkCountryName()
-        }
-
-        binding.btnLoadGIF.setOnClickListener {
-            navigateToGifPage()
-        }
-
-        binding.btnFBLogin.setOnClickListener {
-            startActivity(Intent(mContext, FBLoginActivity::class.java))
+        binding.btnTestLocalization.setOnClickListener {
+            showLanguageSelectionDialog(this@MainActivity)
         }
     }
 
-    private fun navigateToWebViewPage() {
-        startActivity(
-            Intent(this, WebViewActivity::class.java)
+    override fun attachBaseContext(newBase: Context) {
+//        val context: Context = MyContextWrapper.wrap(newBase)
+        val context = MyContextWrapper(newBase).wrap(newBase)
+        super.attachBaseContext(context)
+    }
+
+    fun showLanguageSelectionDialog(mContext: Activity) {
+        val languageOptions = arrayOf(
+            mContext.getString(R.string.language_english),
+            mContext.getString(R.string.language_hindi),
+            mContext.getString(R.string.language_russian),
+            mContext.getString(R.string.language_uzbek)
         )
-    }
+        val savedLanguage: String = mContext.getPref(SP.SELECTED_LANGUAGE)
 
-    private fun navigateToGifPage() {
-        startActivity(
-            Intent(this, GifActivity::class.java)
-        )
-    }
-
-    private fun checkCountryName() {
-        try {
-//        val country = applicationContext.resources.configuration.locale.displayCountry
-            val tm = getSystemService(TELEPHONY_SERVICE) as TelephonyManager
-            val countryCode = tm.simCountryIso
-
-            Toast.makeText(mContext, "Country Code = $countryCode", Toast.LENGTH_LONG).show()
-        } catch (e: Exception) {
-            Toast.makeText(mContext, e.message, Toast.LENGTH_SHORT).show()
+        val localization = { dialog: DialogInterface, which: Int ->
+            AppUtil.changeLocalization(mContext, which)
+            dialog.dismiss()
         }
+        val alertDialogBuilder: AlertDialog.Builder = AlertDialog.Builder(mContext)
+        alertDialogBuilder.setIcon(R.mipmap.logo)
+        alertDialogBuilder.setTitle(mContext.getString(R.string.change_localization))
+        var index = 0
+        if (savedLanguage.equals(SP.LANGUAGE_ENGLISH, true)) {
+            index = 0
+        } else if (savedLanguage.equals(SP.LANGUAGE_HINDI, true)) {
+            index = 1
+        } else if (savedLanguage.equals(SP.LANGUAGE_RUSSIAN, true)) {
+            index = 2
+        }else if (savedLanguage.equals(SP.LANGUAGE_UZBEK, true)) {
+            index = 3
+        }
+        alertDialogBuilder.setSingleChoiceItems(
+            languageOptions,
+            index,
+            DialogInterface.OnClickListener(function = localization)
+        )
+        val alert: AlertDialog = alertDialogBuilder.create()
+        alert.show()
+
     }
 }
