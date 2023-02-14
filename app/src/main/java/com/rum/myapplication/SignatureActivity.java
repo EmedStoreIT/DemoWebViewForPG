@@ -26,20 +26,20 @@ public class SignatureActivity extends AppCompatActivity {
 
         initDrawingView();
 
-
-        binding.llSignatureView.addView(drawingView);
-        binding.llSignatureView.invalidate();
     }
 
     private void initDrawingView() {
         Paint mPaint = new Paint();
         mPaint.setAntiAlias(true);
         mPaint.setDither(true);
-        mPaint.setColor(ContextCompat.getColor(this, R.color.colorBlack));
+        mPaint.setColor(ContextCompat.getColor(mContext, R.color.colorBlack));
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeJoin(Paint.Join.ROUND);
         mPaint.setStrokeCap(Paint.Cap.ROUND);
         mPaint.setStrokeWidth(8);
         drawingView = new DrawingView(mContext, mPaint);
+
+        binding.llSignatureView.addView(drawingView);
+        binding.llSignatureView.invalidate();
     }
 }
