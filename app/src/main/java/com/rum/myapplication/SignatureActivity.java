@@ -2,6 +2,7 @@ package com.rum.myapplication;
 
 import android.content.Context;
 import android.graphics.Paint;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +14,7 @@ import androidx.databinding.DataBindingUtil;
 
 import com.rum.myapplication.databinding.ActivitySignatureBinding;
 import com.rum.myapplication.generalHelper.DrawingView;
+import com.rum.myapplication.generalHelper.L;
 
 public class SignatureActivity extends AppCompatActivity {
 
@@ -27,22 +29,24 @@ public class SignatureActivity extends AppCompatActivity {
         mContext = this;
         binding = DataBindingUtil.setContentView(this, R.layout.activity_signature);
 
+        initComponents();
         setListeners();
+
+    }
+
+    private void initComponents() {
+        hideProgress();
+        hidePaint();
         initDrawingView();
         initAndPlayVideo();
-
-        hidePaint();
     }
 
     private void setListeners() {
-        binding.btnStartStop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(isPaintEnabled) {
-                    hidePaint();
-                } else {
-                    showPaintOption();
-                }
+        binding.btnStartStop.setOnClickListener(view -> {
+            if(isPaintEnabled) {
+                hidePaint();
+            } else {
+                showPaintOption();
             }
         });
     }
@@ -65,12 +69,29 @@ public class SignatureActivity extends AppCompatActivity {
     private void initAndPlayVideo() {
         MediaController mediaController= new MediaController(mContext);
         mediaController.setAnchorView(binding.videoView);
+
+        showProgress();
+
         Uri uri=Uri.parse("http://techslides.com/demos/sample-videos/small.mp4");
         binding.videoView.setMediaController(mediaController);
         binding.videoView.setVideoURI(uri);
         binding.videoView.requestFocus();
 
         binding.videoView.start();
+
+
+        try {
+            binding.videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                @Override
+                public void onPrepared(MediaPlayer mediaPlayer) {
+                    hideProgress();
+                }
+            });
+        } catch (Exception e) {
+            L.showToast(mContext, e.getMessage());
+            hideProgress();
+        }
+
     }
 
     private void showPaintOption() {
@@ -81,5 +102,13 @@ public class SignatureActivity extends AppCompatActivity {
     private void hidePaint() {
         isPaintEnabled = false;
         binding.llSignatureView.setVisibility(View.GONE);
+    }
+
+    private void showProgress() {
+        binding.progressBar.setVisibility(View.VISIBLE);
+    }
+
+    private void hideProgress() {
+        binding.progressBar.setVisibility(View.GONE);
     }
 }
