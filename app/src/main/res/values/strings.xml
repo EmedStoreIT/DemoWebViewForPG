@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name">EmedStoreTestLab</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
