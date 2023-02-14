@@ -1,6 +1,7 @@
 package com.rum.myapplication
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.rum.myapplication.databinding.ActivityMainBinding
@@ -20,5 +21,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
 
+        setListeners()
+    }
+
+    private fun setListeners() {
+        binding.btnNavigateToSign.setOnClickListener {
+            startActivity(Intent(mContext, SignatureActivity::class.java))
+        }
     }
 }
