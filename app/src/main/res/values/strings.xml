@@ -17,4 +17,6 @@
     <string name="take_valid_signature">Please, Take a valid signature.</string>
     <string name="error_saving_signature">Error Saving Signature!!!</string>
     <string name="signatur_saved">Signature Saved Successfully.</string>
+
+    <string name="media_url_mp4">https://storage.googleapis.com/exoplayer-test-media-0/BigBuckBunny_320x180.mp4</string>
 </resources>
