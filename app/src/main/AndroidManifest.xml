@@ -57,9 +57,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".WebViewActivity" />
-        <activity android:name="com.rum.myapplication.gif.GifActivity" />
-        <activity android:name="com.rum.myapplication.fblogin.FBLoginActivity" />
+        <activity android:name=".SignatureActivity" />
     </application>
 
 </manifest>

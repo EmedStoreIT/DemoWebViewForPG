@@ -4,13 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".fblogin.FBLoginActivity">
+    tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/btnTestFBLogin"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Test FB Login" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    </LinearLayout>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

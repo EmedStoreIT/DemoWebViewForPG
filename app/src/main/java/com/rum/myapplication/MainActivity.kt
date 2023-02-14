@@ -1,14 +1,9 @@
 package com.rum.myapplication
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
-import android.telephony.TelephonyManager
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.rum.myapplication.databinding.ActivityMainBinding
-import com.rum.myapplication.fblogin.FBLoginActivity
-import com.rum.myapplication.gif.GifActivity
 
 
 class MainActivity : AppCompatActivity() {
