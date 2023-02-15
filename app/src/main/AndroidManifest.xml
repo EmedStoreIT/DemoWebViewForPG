@@ -34,7 +34,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".SignatureActivity" />
-        <activity android:name=".SignatureActivity2" />
+        <activity android:name=".PlayerActivity" />
     </application>
 
 </manifest>
