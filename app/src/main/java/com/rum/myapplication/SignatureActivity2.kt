@@ -22,6 +22,7 @@ class SignatureActivity2 : AppCompatActivity() {
     private lateinit var mContext: Context
     private lateinit var binding: ActivitySignatureBinding
 
+    private lateinit var drawingView: DrawingView
     private var isPaintEnabled = false
 
     private var player: ExoPlayer? = null
@@ -47,11 +48,20 @@ class SignatureActivity2 : AppCompatActivity() {
     }
 
     private fun setListeners() {
-        binding.btnStartStop.setOnClickListener { view ->
+        binding.btnStartStop.setOnClickListener {
             if (isPaintEnabled) {
                 hidePaint()
             } else {
                 showPaintOption()
+            }
+        }
+
+        binding.btnClear.setOnClickListener {
+            try {
+                drawingView.clear()
+                drawingView.invalidate()
+            } catch (e: java.lang.Exception) {
+                e.printStackTrace()
             }
         }
     }
@@ -85,12 +95,12 @@ class SignatureActivity2 : AppCompatActivity() {
         val mPaint = Paint()
         mPaint.isAntiAlias = true
         mPaint.isDither = true
-        mPaint.color = ContextCompat.getColor(mContext, R.color.colorOrange)
+        mPaint.color = ContextCompat.getColor(mContext, R.color.colorRed)
         mPaint.style = Paint.Style.STROKE
         mPaint.strokeJoin = Paint.Join.ROUND
         mPaint.strokeCap = Paint.Cap.ROUND
         mPaint.strokeWidth = 8f
-        val drawingView = DrawingView(mContext, mPaint)
+        drawingView= DrawingView(mContext, mPaint)
         binding.llSignatureView.addView(drawingView)
         binding.llSignatureView.invalidate()
     }
