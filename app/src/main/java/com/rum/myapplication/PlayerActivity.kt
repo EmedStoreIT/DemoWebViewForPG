@@ -21,7 +21,7 @@ import com.rum.myapplication.generalHelper.DrawingView
 import com.rum.myapplication.generalHelper.L
 
 @UnstableApi
-class SignatureActivity2 : AppCompatActivity() {
+class PlayerActivity : AppCompatActivity() {
     private lateinit var mContext: Context
     private lateinit var binding: ActivitySignatureBinding
 
