@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name">EmedStoreTestLab</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -16,4 +17,6 @@
     <string name="take_valid_signature">Please, Take a valid signature.</string>
     <string name="error_saving_signature">Error Saving Signature!!!</string>
     <string name="signatur_saved">Signature Saved Successfully.</string>
+
+    <string name="media_url_mp4">https://storage.googleapis.com/exoplayer-test-media-0/BigBuckBunny_320x180.mp4</string>
 </resources>

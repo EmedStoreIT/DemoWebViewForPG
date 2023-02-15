@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setListeners() {
         binding.btnNavigateToSign.setOnClickListener {
-            startActivity(Intent(mContext, SignatureActivity::class.java))
+            startActivity(Intent(mContext, SignatureActivity2::class.java))
         }
     }
 }
