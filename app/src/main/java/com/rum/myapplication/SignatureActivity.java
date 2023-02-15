@@ -38,7 +38,7 @@ public class SignatureActivity extends AppCompatActivity {
     }
 
     private void setListeners() {
-        binding.btnStartStop.setOnClickListener(view -> {
+        binding.btnPaint.setOnClickListener(view -> {
             if (isPaintEnabled) {
                 hidePaint();
             } else {

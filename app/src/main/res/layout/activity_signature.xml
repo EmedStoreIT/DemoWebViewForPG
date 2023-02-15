@@ -32,13 +32,15 @@
 
             <TableRow
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical">
 
                 <Button
-                    android:id="@+id/btnStartStop"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Paint" />
+                    android:id="@+id/btnPaint"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/marker_disable" />
 
                 <ProgressBar
                     android:id="@+id/progressBar"
@@ -47,9 +49,9 @@
 
                 <Button
                     android:id="@+id/btnClear"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Clear" />
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/icon_refresh" />
             </TableRow>
         </LinearLayout>
     </LinearLayout>

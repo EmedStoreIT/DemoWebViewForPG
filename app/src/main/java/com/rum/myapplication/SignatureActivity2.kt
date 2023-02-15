@@ -6,6 +6,7 @@ import android.graphics.Paint
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
@@ -48,7 +49,7 @@ class SignatureActivity2 : AppCompatActivity() {
     }
 
     private fun setListeners() {
-        binding.btnStartStop.setOnClickListener {
+        binding.btnPaint.setOnClickListener {
             if (isPaintEnabled) {
                 hidePaint()
             } else {
@@ -124,11 +125,19 @@ class SignatureActivity2 : AppCompatActivity() {
     private fun showPaintOption() {
         isPaintEnabled = true
         binding.llSignatureView.visibility = View.VISIBLE
+
+        binding.btnPaint.background = AppCompatResources.getDrawable(mContext, R.drawable.marker_enable)
+
+        binding.btnClear.visibility = View.VISIBLE
     }
 
     private fun hidePaint() {
         isPaintEnabled = false
         binding.llSignatureView.visibility = View.GONE
+
+        binding.btnPaint.background = AppCompatResources.getDrawable(mContext, R.drawable.marker_disable)
+
+        binding.btnClear.visibility = View.GONE
     }
 
     private fun hideProgress() {
