@@ -26,7 +26,6 @@ class SignatureActivity2 : AppCompatActivity() {
     private lateinit var binding: ActivitySignatureBinding
 
     private lateinit var drawingView: DrawingView
-    private var isPaintEnabled = false
 
     private var player: ExoPlayer? = null
     private var playWhenReady = true
@@ -35,7 +34,7 @@ class SignatureActivity2 : AppCompatActivity() {
 
     private val playbackStateListener: Player.Listener = playbackStateListener()
 
-    private var playerIsPlaying:Boolean = false
+    private var playerIsPlaying: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,16 +56,13 @@ class SignatureActivity2 : AppCompatActivity() {
     private fun setListeners() {
         binding.btnPaint.setOnClickListener {
 
-            if(playerIsPlaying) {
-                if(player != null) {
-                    player!!.playWhenReady = false
-                }
-            }
 
-            if (isPaintEnabled) {
-                hidePaint()
-            } else {
+            if (playerIsPlaying) {
+                setPlaying(false)
                 showPaintOption()
+            } else {
+                setPlaying(true)
+                hidePaint()
             }
         }
 
@@ -114,7 +110,7 @@ class SignatureActivity2 : AppCompatActivity() {
         mPaint.strokeJoin = Paint.Join.ROUND
         mPaint.strokeCap = Paint.Cap.ROUND
         mPaint.strokeWidth = 8f
-        drawingView= DrawingView(mContext, mPaint)
+        drawingView = DrawingView(mContext, mPaint)
         binding.llSignatureView.addView(drawingView)
         binding.llSignatureView.invalidate()
     }
@@ -146,19 +142,19 @@ class SignatureActivity2 : AppCompatActivity() {
     }
 
     private fun showPaintOption() {
-        isPaintEnabled = true
         binding.llSignatureView.visibility = View.VISIBLE
 
-        binding.btnPaint.background = AppCompatResources.getDrawable(mContext, R.drawable.marker_enable)
+        binding.btnPaint.background =
+            AppCompatResources.getDrawable(mContext, R.drawable.marker_enable)
 
         binding.btnClear.visibility = View.VISIBLE
     }
 
     private fun hidePaint() {
-        isPaintEnabled = false
         binding.llSignatureView.visibility = View.GONE
 
-        binding.btnPaint.background = AppCompatResources.getDrawable(mContext, R.drawable.marker_disable)
+        binding.btnPaint.background =
+            AppCompatResources.getDrawable(mContext, R.drawable.marker_disable)
 
         binding.btnClear.visibility = View.GONE
     }
@@ -169,6 +165,14 @@ class SignatureActivity2 : AppCompatActivity() {
 
     private fun showProgress() {
         binding.progressBar.visibility = View.VISIBLE
+    }
+
+    private fun setPlaying(setPlay: Boolean) {
+        if (player != null) {
+            player!!.playWhenReady = setPlay
+
+            binding.videoView.useController = setPlay
+        }
     }
 
     private fun playbackStateListener() = object : Player.Listener {
