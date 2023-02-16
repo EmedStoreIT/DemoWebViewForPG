@@ -19,4 +19,6 @@
     <string name="signatur_saved">Signature Saved Successfully.</string>
 
     <string name="media_url_mp4">https://storage.googleapis.com/exoplayer-test-media-0/BigBuckBunny_320x180.mp4</string>
+    <string name="media_url_mp4_2">http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4</string>
+    <string name="media_url_mp4_3">https://assets.mixkit.co/videos/preview/mixkit-red-frog-on-a-log-1487-large.mp4</string>
 </resources>

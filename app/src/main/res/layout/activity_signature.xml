@@ -37,9 +37,9 @@
 
                 <Button
                     android:id="@+id/btnPaint"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_margin="10dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_margin="5dp"
                     android:background="@drawable/marker_disable" />
 
                 <ProgressBar
@@ -49,8 +49,9 @@
 
                 <Button
                     android:id="@+id/btnClear"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_margin="5dp"
                     android:background="@drawable/icon_refresh" />
             </TableRow>
         </LinearLayout>
