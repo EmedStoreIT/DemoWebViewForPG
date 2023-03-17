@@ -5,6 +5,7 @@ import android.app.Activity
 import android.content.Context
 import android.graphics.Paint
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import androidx.appcompat.content.res.AppCompatResources
@@ -73,7 +74,7 @@ class VideoWithPaintActivity : Activity() {
     public override fun onStart() {
         super.onStart()
 //        if (Util.SDK_INT > 23) {
-        initializePlayer()
+        checkUrlAndProceed()
 //        }
     }
 
@@ -81,7 +82,7 @@ class VideoWithPaintActivity : Activity() {
         super.onResume()
         hideSystemUi()
         if ((/*Util.SDK_INT <= 23 ||*/ player == null)) {
-            initializePlayer()
+            checkUrlAndProceed()
         }
     }
 
@@ -109,18 +110,31 @@ class VideoWithPaintActivity : Activity() {
         binding.llSignatureView.invalidate()
     }
 
-    private fun initializePlayer() {
-        player = ExoPlayer.Builder(this).build().also { exoPlayer ->
-            binding.videoView.player = exoPlayer
+    private fun checkUrlAndProceed() {
+        val videoUrl = intent.getStringExtra(getString(R.string.bundle_key_pass_video_url))
+        if (videoUrl != null && !TextUtils.isEmpty(videoUrl)) {
+            showDataFound()
+            initializePlayer(videoUrl)
+        } else {
+            showNoDataFound()
+        }
+    }
 
-            val videoUrl = getString(R.string.media_url_mp4)
-            val mediaItem = MediaItem.fromUri(videoUrl)
-            exoPlayer.setMediaItem(mediaItem)
+    private fun initializePlayer(videoUrl: String?) {
+        if (videoUrl != null && !TextUtils.isEmpty(videoUrl)) {
+            showDataFound()
 
-            exoPlayer.playWhenReady = playWhenReady
-            exoPlayer.seekTo(currentItem, playbackPosition)
-            exoPlayer.addListener(playbackStateListener)
-            exoPlayer.prepare()
+            player = ExoPlayer.Builder(mContext).build().also { exoPlayer ->
+                binding.videoView.player = exoPlayer
+
+                val mediaItem = MediaItem.fromUri(videoUrl)
+                exoPlayer.setMediaItem(mediaItem)
+
+                exoPlayer.playWhenReady = playWhenReady
+                exoPlayer.seekTo(currentItem, playbackPosition)
+                exoPlayer.addListener(playbackStateListener)
+                exoPlayer.prepare()
+            }
         }
     }
 
@@ -203,8 +217,12 @@ class VideoWithPaintActivity : Activity() {
     private fun showNoDataFound() {
         binding.llMain.visibility = View.GONE
         binding.llError.visibility = View.VISIBLE
-        binding.llError.setOnClickListener {
+        binding.btnReturn.setOnClickListener {
             finish()
+        }
+
+        binding.btnPlayDemoVideo.setOnClickListener {
+            initializePlayer(getString(R.string.media_url_mp4))
         }
     }
 }

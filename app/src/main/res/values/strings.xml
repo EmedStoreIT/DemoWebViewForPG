@@ -1,7 +1,10 @@
 <resources>
+    <string name="bundle_key_pass_video_url" translatable="false">bundle_key_pass_video_url</string>
+
     <string name="app_name">EmedStore Video Player</string>
     <string name="invalid_video_url_message">"Please provide valid video url</string>
-    <string name="return_from_activity">"Return</string>
+    <string name="return_from_activity">Return</string>
+    <string name="play_demo_video">"Play demo video</string>
 
     <string name="media_url_mp4">https://storage.googleapis.com/exoplayer-test-media-0/BigBuckBunny_320x180.mp4</string>
 </resources>
