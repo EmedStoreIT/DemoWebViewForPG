@@ -1,12 +1,12 @@
 package com.emedstore.video_with_paint
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Context
 import android.graphics.Paint
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat
@@ -18,7 +18,7 @@ import androidx.media3.exoplayer.ExoPlayer
 import com.emedstore.video_with_paint.databinding.ActivityVideoWithPaintBinding
 import com.emedstore.video_with_paint.generalHelper.DrawingView
 
-class VideoWithPaintActivity : AppCompatActivity() {
+class VideoWithPaintActivity : Activity() {
     private lateinit var mContext: Context
     private lateinit var binding: ActivityVideoWithPaintBinding
     private lateinit var drawingView: DrawingView
@@ -113,14 +113,14 @@ class VideoWithPaintActivity : AppCompatActivity() {
         player = ExoPlayer.Builder(this).build().also { exoPlayer ->
             binding.videoView.player = exoPlayer
 
-            val mediaItem = MediaItem.fromUri(getString(R.string.media_url_mp4))
+            val videoUrl = getString(R.string.media_url_mp4)
+            val mediaItem = MediaItem.fromUri(videoUrl)
             exoPlayer.setMediaItem(mediaItem)
 
             exoPlayer.playWhenReady = playWhenReady
             exoPlayer.seekTo(currentItem, playbackPosition)
             exoPlayer.addListener(playbackStateListener)
             exoPlayer.prepare()
-
         }
     }
 
@@ -192,6 +192,19 @@ class VideoWithPaintActivity : AppCompatActivity() {
         override fun onIsPlayingChanged(isPlaying: Boolean) {
             playerIsPlaying = isPlaying
             super.onIsPlayingChanged(isPlaying)
+        }
+    }
+
+    private fun showDataFound() {
+        binding.llMain.visibility = View.VISIBLE
+        binding.llError.visibility = View.GONE
+    }
+
+    private fun showNoDataFound() {
+        binding.llMain.visibility = View.GONE
+        binding.llError.visibility = View.VISIBLE
+        binding.llError.setOnClickListener {
+            finish()
         }
     }
 }
