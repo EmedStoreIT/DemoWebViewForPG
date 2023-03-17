@@ -9,13 +9,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 
-import com.rum.myapplication.databinding.ActivitySignatureBinding;
+import com.rum.myapplication.databinding.ActivityVideoPlayerBinding;
 import com.rum.myapplication.generalHelper.DrawingView;
 
 public class SignatureActivity extends AppCompatActivity {
 
     private Context mContext;
-    private ActivitySignatureBinding binding;
+    private ActivityVideoPlayerBinding binding;
 
     private boolean isPaintEnabled = false;
 
@@ -23,7 +23,7 @@ public class SignatureActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = this;
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_signature);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_video_player);
 
         initComponents();
         setListeners();
