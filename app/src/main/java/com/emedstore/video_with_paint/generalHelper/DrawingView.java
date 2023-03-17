@@ -1,4 +1,4 @@
-package com.rum.myapplication.generalHelper;
+package com.emedstore.video_with_paint.generalHelper;
 
 import android.content.Context;
 import android.graphics.Bitmap;

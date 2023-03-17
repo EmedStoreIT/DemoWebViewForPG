@@ -1,4 +1,4 @@
-package com.rum.myapplication
+package com.emedstore.video_with_paint
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -15,8 +15,8 @@ import androidx.core.view.WindowInsetsControllerCompat
 import androidx.media3.common.MediaItem
 import androidx.media3.common.Player
 import androidx.media3.exoplayer.ExoPlayer
-import com.rum.myapplication.databinding.ActivityVideoPlayerBinding
-import com.rum.myapplication.generalHelper.DrawingView
+import com.emedstore.video_with_paint.databinding.ActivityVideoPlayerBinding
+import com.emedstore.video_with_paint.generalHelper.DrawingView
 
 class PlayerActivity : AppCompatActivity() {
     private lateinit var mContext: Context
