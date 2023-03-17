@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.rum.myapplication.databinding.ActivityMainBinding
+import com.videowithpaint.MainLibraryActivity
 
 
 class MainActivity : AppCompatActivity() {
@@ -26,7 +27,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setListeners() {
         binding.btnNavigateToSign.setOnClickListener {
-            startActivity(Intent(mContext, PlayerActivity::class.java))
+            startActivity(Intent(mContext, MainLibraryActivity::class.java))
         }
     }
 }
