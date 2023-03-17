@@ -52,8 +52,6 @@ class PlayerActivity : AppCompatActivity() {
 
     private fun setListeners() {
         binding.btnPaint.setOnClickListener {
-
-
             if (playerIsPlaying) {
                 setPlaying(false)
                 showPaintOption()
@@ -113,20 +111,18 @@ class PlayerActivity : AppCompatActivity() {
     }
 
     private fun initializePlayer() {
-        player = ExoPlayer.Builder(this)
-            .build()
-            .also { exoPlayer ->
-                binding.videoView.player = exoPlayer
+        player = ExoPlayer.Builder(this).build().also { exoPlayer ->
+            binding.videoView.player = exoPlayer
 
-                val mediaItem = MediaItem.fromUri(getString(R.string.media_url_mp4))
-                exoPlayer.setMediaItem(mediaItem)
+            val mediaItem = MediaItem.fromUri(getString(R.string.media_url_mp4))
+            exoPlayer.setMediaItem(mediaItem)
 
-                exoPlayer.playWhenReady = playWhenReady
-                exoPlayer.seekTo(currentItem, playbackPosition)
-                exoPlayer.addListener(playbackStateListener)
-                exoPlayer.prepare()
+            exoPlayer.playWhenReady = playWhenReady
+            exoPlayer.seekTo(currentItem, playbackPosition)
+            exoPlayer.addListener(playbackStateListener)
+            exoPlayer.prepare()
 
-            }
+        }
     }
 
     private fun releasePlayer() {
@@ -135,7 +131,6 @@ class PlayerActivity : AppCompatActivity() {
             exoPlayer.release()
         }
         player = null
-
     }
 
     private fun showPaintOption() {
