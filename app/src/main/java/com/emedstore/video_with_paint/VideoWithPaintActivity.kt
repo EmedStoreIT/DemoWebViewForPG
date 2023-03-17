@@ -15,13 +15,12 @@ import androidx.core.view.WindowInsetsControllerCompat
 import androidx.media3.common.MediaItem
 import androidx.media3.common.Player
 import androidx.media3.exoplayer.ExoPlayer
-import com.emedstore.video_with_paint.databinding.ActivityVideoPlayerBinding
+import com.emedstore.video_with_paint.databinding.ActivityVideoWithPaintBinding
 import com.emedstore.video_with_paint.generalHelper.DrawingView
 
-class PlayerActivity : AppCompatActivity() {
+class VideoWithPaintActivity : AppCompatActivity() {
     private lateinit var mContext: Context
-    private lateinit var binding: ActivityVideoPlayerBinding
-
+    private lateinit var binding: ActivityVideoWithPaintBinding
     private lateinit var drawingView: DrawingView
 
     private var player: ExoPlayer? = null
@@ -37,7 +36,7 @@ class PlayerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         mContext = this
-        binding = ActivityVideoPlayerBinding.inflate(layoutInflater)
+        binding = ActivityVideoWithPaintBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         initComponents()
