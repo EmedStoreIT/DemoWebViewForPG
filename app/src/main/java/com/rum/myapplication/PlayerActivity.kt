@@ -13,17 +13,14 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.media3.common.MediaItem
 import androidx.media3.common.Player
-import androidx.media3.common.util.UnstableApi
-import androidx.media3.common.util.Util
 import androidx.media3.exoplayer.ExoPlayer
-import com.rum.myapplication.databinding.ActivitySignatureBinding
+import com.rum.myapplication.databinding.ActivityVideoPlayerBinding
 import com.rum.myapplication.generalHelper.DrawingView
 import com.rum.myapplication.generalHelper.L
 
-@UnstableApi
 class PlayerActivity : AppCompatActivity() {
     private lateinit var mContext: Context
-    private lateinit var binding: ActivitySignatureBinding
+    private lateinit var binding: ActivityVideoPlayerBinding
 
     private lateinit var drawingView: DrawingView
 
@@ -40,7 +37,7 @@ class PlayerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         mContext = this
-        binding = ActivitySignatureBinding.inflate(layoutInflater)
+        binding = ActivityVideoPlayerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         initComponents()
@@ -78,15 +75,15 @@ class PlayerActivity : AppCompatActivity() {
 
     public override fun onStart() {
         super.onStart()
-        if (Util.SDK_INT > 23) {
-            initializePlayer()
-        }
+//        if (Util.SDK_INT > 23) {
+        initializePlayer()
+//        }
     }
 
     public override fun onResume() {
         super.onResume()
         hideSystemUi()
-        if ((Util.SDK_INT <= 23 || player == null)) {
+        if ((/*Util.SDK_INT <= 23 ||*/ player == null)) {
             initializePlayer()
         }
     }
