@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Paint
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
@@ -16,7 +17,6 @@ import androidx.media3.common.Player
 import androidx.media3.exoplayer.ExoPlayer
 import com.rum.myapplication.databinding.ActivityVideoPlayerBinding
 import com.rum.myapplication.generalHelper.DrawingView
-import com.rum.myapplication.generalHelper.L
 
 class PlayerActivity : AppCompatActivity() {
     private lateinit var mContext: Context
@@ -181,7 +181,8 @@ class PlayerActivity : AppCompatActivity() {
                 ExoPlayer.STATE_ENDED -> "ExoPlayer.STATE_ENDED     -"
                 else -> "UNKNOWN_STATE             -"
             }
-            L.showError("changed state to $stateString")
+            Log.e("", "changed state to $stateString")
+
 
             /*if (playWhenReady && playbackState == Player.STATE_READY) {
                 // media actually playing
