@@ -1,7 +1,7 @@
 <resources>
     <string name="bundle_key_pass_video_url" translatable="false">bundle_key_pass_video_url</string>
 
-    <string name="app_name">EmedStore Video Player</string>
+    <string name="video_with_paint_title">EmedStore Video Player</string>
     <string name="invalid_video_url_message">"Please provide valid video url</string>
     <string name="return_from_activity">Return</string>
     <string name="play_demo_video">"Play demo video</string>
