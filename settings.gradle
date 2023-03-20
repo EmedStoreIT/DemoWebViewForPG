@@ -12,4 +12,4 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-include ':app'
+include ':emedstore_video_with_paint'
