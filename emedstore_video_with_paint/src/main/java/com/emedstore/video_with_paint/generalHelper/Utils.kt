@@ -10,7 +10,7 @@ fun Context.navigateToPlayerWithPaintActivity(videoUrl: String?) {
         Intent(this, VideoWithPaintActivity::class.java)
             .putExtra(
                 getString(R.string.bundle_key_pass_video_url),
-                "https://bcci.emed-healthtech.in/qa/uploads/doctor/question/video/video1-1679038201.mp4"
+                videoUrl
             )
     )
 }
