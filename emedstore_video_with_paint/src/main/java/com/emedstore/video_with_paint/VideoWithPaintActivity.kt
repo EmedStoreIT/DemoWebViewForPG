@@ -69,6 +69,8 @@ class VideoWithPaintActivity : Activity() {
                 e.printStackTrace()
             }
         }
+
+        binding.btnCloseVideo.setOnClickListener { finish() }
     }
 
     public override fun onStart() {
