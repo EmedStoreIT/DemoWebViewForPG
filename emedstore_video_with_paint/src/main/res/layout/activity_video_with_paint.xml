@@ -29,6 +29,14 @@
                     android:layout_height="match_parent"
                     android:background="@color/colorTransparent"
                     android:orientation="horizontal" />
+
+                <Button
+                    android:id="@+id/btnCloseVideo"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/close_video" />
             </RelativeLayout>
 
             <TableRow
