@@ -1,5 +1,6 @@
 <resources>
     <string name="bundle_key_pass_video_url" translatable="false">bundle_key_pass_video_url</string>
+    <string name="bundle_key_pass_show_paint_options" translatable="false">bundle_key_pass_show_paint_options</string>
 
     <string name="video_with_paint_title">EmedStore Video Player</string>
     <string name="invalid_video_url_message">"Please provide valid video url</string>

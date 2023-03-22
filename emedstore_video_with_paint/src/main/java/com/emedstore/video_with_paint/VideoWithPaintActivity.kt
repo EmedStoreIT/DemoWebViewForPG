@@ -48,6 +48,10 @@ class VideoWithPaintActivity : Activity() {
         hideProgress()
         hidePaint()
         initDrawingView()
+
+        val showPaintOptions =
+            intent.getBooleanExtra(getString(R.string.bundle_key_pass_show_paint_options), false)
+        binding.trPaintOptions.visibility = if (showPaintOptions) View.VISIBLE else View.GONE
     }
 
     private fun setListeners() {
