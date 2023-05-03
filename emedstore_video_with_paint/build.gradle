@@ -1,8 +1,8 @@
 plugins {
-    id 'com.android.library'
+    id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
 }
-def mediaVersion = "1.0.0-rc02"
+def mediaVersion = "1.0.1"
 android {
     compileSdk 33
 
@@ -33,10 +33,11 @@ android {
     dataBinding {
         enabled = true
     }
+    namespace 'com.emedstore.video_with_paint'
 }
 
 dependencies {
-    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.core:core-ktx:1.10.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.8.0'
     implementation "androidx.media3:media3-exoplayer:$mediaVersion"
